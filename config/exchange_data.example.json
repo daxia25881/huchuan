@@ -1,0 +1,9 @@
+{
+    "base_url": "https://webdav.example.com/dav/",
+    "username": "your_username",
+    "password": "your_password",
+    "config_file": "SyncClipboard.json",
+    "check_interval": 0.5,
+    "device_id": "PC-001",
+    "notification_url": "https://api.day.app/your_key/"
+}
