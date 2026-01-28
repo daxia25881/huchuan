@@ -12,16 +12,16 @@
 - 🔐 **安全传输** - 支持 HTTP Basic 认证，保护您的数据安全
 - 💻 **系统托盘运行** - 后台静默运行，不干扰日常工作
 - 📱 **多设备支持** - 通过设备 ID 区分不同设备，避免同步冲突
-- 🔔 **推送通知** - 支持 Bark 等推送服务，实时获知同步状态
+- 🔔 **推送通知** - 支持 Bark 等推送服务（作为iPhone触发信号）
 - ⚡ **高效同步** - 使用 ETag 机制，只在内容变化时下载，节省带宽
-- 🎨 **自定义配置** - 灵活的配置文件，可自定义同步间隔、服务器地址等
+- 🎨 **自定义配置** - 灵活的配置文件，可自定义同步间隔、webdav服务器地址等
 
 ## 📦 安装
 
 ### 环境要求
 
 - Python 3.7+
-- 支持 WebDAV 协议的云存储服务（如坚果云、Nextcloud 等）
+- 支持 WebDAV 协议的云存储服务（如坚果云、Nextcloud 、infini等）
 
 ### 依赖安装
 
@@ -77,7 +77,19 @@ python huchuan.py
 pyinstaller -F -w -i exchange.ico huchuan.py
 ```
 
-打包后，将 `config` 文件夹和 `exchange.ico` 放在可执行文件同目录下。
+### 打包后目录结构
+
+打包完成后，请确保文件按以下结构放置：
+
+```
+📁 程序目录/
+├── 📄 huchuan.exe          # 主程序（打包生成）
+├── 🖼️ exchange.ico         # 托盘图标文件
+└── 📁 config/              # 配置文件夹
+    └── 📄 exchange_data.json   # 配置文件
+```
+
+> ⚠️ **注意**：`config` 文件夹和 `exchange.ico` 必须与 `huchuan.exe` 位于同一目录下，否则程序将无法正常读取配置和显示图标。
 
 ## 🖥️ 系统托盘菜单
 
@@ -97,7 +109,6 @@ pyinstaller -F -w -i exchange.ico huchuan.py
 
 - Windows / macOS / Linux 桌面客户端
 - iOS 客户端（如 Clip 等）
-- Android 客户端
 
 ## ❓ 常见问题
 
@@ -108,10 +119,6 @@ A: 登录坚果云网页版 → 账户信息 → 安全选项 → 第三方应�
 ### Q: 同步延迟较高怎么办？
 
 A: 可以减小 `check_interval` 的值，但建议不要低于 0.3 秒，以避免请求过于频繁。
-
-### Q: 如何配置 Bark 推送通知？
-
-A: 在 iOS 设备上安装 Bark App，复制推送 URL 填入 `notification_url` 配置项。
 
 ## 📄 许可证
 
