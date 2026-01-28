@@ -1,0 +1,7 @@
+.idea/
+.venv/
+__pycache__/
+*.spec
+build/
+dist/
+config/exchange_data.json
